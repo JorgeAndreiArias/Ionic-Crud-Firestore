@@ -1,0 +1,23 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Editar Producto</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="danger" (click)="mydismiss()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="updateProduct()">{{ btn }}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="product.Nombre" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Codigo</ion-label>
+      <ion-input [(ngModel)]="product.Codigo" type="text"></ion-input>
+    </ion-item>
+</ion-content>

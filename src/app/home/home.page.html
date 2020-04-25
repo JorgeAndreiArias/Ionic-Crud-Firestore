@@ -1,20 +1,65 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-searchbar class="search" (ionChange)="getProduct(productName)" [(ngModel)]="productName" placeholder="Buscar Productos" [debounce]="250"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="false">
+  <ion-grid class="ion-justify-content-center">
+    <ion-row>
+      <ion-item-divider>
+        <ion-col size="5">
+          <div>
+            <ion-label>Nombre</ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <ion-label>Codigo </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="2">
+        </ion-col>
+        <ion-col size="2">
+        </ion-col>
+      </ion-item-divider>
+    </ion-row>
+    <!-- For  -->
+    <ion-row *ngFor="let product of products">
+      <ion-item-divider color="ligth">
+        <ion-col size="5">
+          <div>
+            <ion-label class="ion-text-wrap">{{ product.Nombre }}</ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <ion-label class="ion-text-wrap">{{ product.Codigo }} </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button size="small" (click)="deleteProduct(product)" expand="block" fill="clear" shape="round" color="danger">
+            Eliminar
+          </ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button size="small" (click)="editarProducto(product)"  expand="block" fill="clear" shape="round" color="primary">
+            Editar
+          </ion-button>
+        </ion-col>
+      </ion-item-divider>
+    </ion-row>
+    <!-- End For -->
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="agregarProducto()">
+        <ion-icon slot="start" name="add"> + </ion-icon>
+          Agregar Producto
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
